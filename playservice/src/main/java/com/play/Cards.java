@@ -11,12 +11,13 @@ import java.util.List;
  * @author Krishna Kotapati
  *
  */
-public class CardTypes implements Comparable<CardTypes> {
-	private CardTypes(){
-		
-	}
+public class Cards implements Comparable<Cards> {
+	private BUNDLECARDS cdNumber;
+	private CARDTYPE cdType;
+	
+	private Cards(){}
 
-	public int compareTo(CardTypes o) {
+	public int compareTo(Cards o) {
 		if(this.getCdNumber() == o.getCdNumber()){
 			return 0;
 		}else if(this.getCdNumber().getOrd() > o.getCdNumber().getOrd()){
@@ -42,9 +43,7 @@ public class CardTypes implements Comparable<CardTypes> {
 	public enum CARDTYPE{
 		CLUB, DIAMOND, HEARTS, SPADE;
 	}
-	private BUNDLECARDS cdNumber;
 	
-	private CARDTYPE cdType;
 	
 	public BUNDLECARDS getCdNumber(){
 		return cdNumber;
@@ -54,15 +53,15 @@ public class CardTypes implements Comparable<CardTypes> {
 		return cdType;
 	}
 	
-	public static void refreshCards(List<CardTypes> cards){
+	public static void refreshCards(List<Cards> cards){
 		Collections.shuffle(cards);
 	}
 	
-	public static List<CardTypes> getPackOfCards(){
-		List<CardTypes> list = new ArrayList<CardTypes>();
+	public static List<Cards> getPackOfCards(){
+		List<Cards> list = new ArrayList<Cards>();
 		for(CARDTYPE types: CARDTYPE.values()){
 			for(BUNDLECARDS cNums: BUNDLECARDS.values()){
-				CardTypes ct = new CardTypes();
+				Cards ct = new Cards();
 				ct.cdNumber= cNums;
 				ct.cdType = types;
 				list.add(ct);
